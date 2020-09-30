@@ -1,0 +1,73 @@
+
+#start-page{
+    display:inline-block;
+    text-align: center;
+    margin-top: 4rem;
+}
+#start-page h1{
+    padding-bottom: 10px;
+
+}
+#start-page p{
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+
+}
+#start{
+    font-size: 16px;
+    background: rgb(85, 1, 85);
+    border: solid 2px  rgb(85, 1, 85);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.container.one{
+    margin-top: 20px;
+    padding: 10px;
+}
+#timer{
+    text-align: center;
+
+}
+#questions{
+    display:none;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+#All-done{
+    display: none;
+    text-align: center;
+    padding-top: 4rem;
+}
+
+#highscore{
+    display: none;
+    text-align: center;
+    margin-top: 4rem;
+}
+#highscore h2{
+    padding-bottom: 1rem;
+}
+button.highscore{
+    font-size: 16px;
+    background: rgb(85, 1, 85);
+    border: solid 2px  rgb(85, 1, 85);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-right: 10px;
+}
+#choices ul{
+    list-style: none;
+    text-align: justify;
+    padding-left: 18rem;
+    padding-top: 1rem;
+}
+li .choice{
+    margin-bottom: 8px;
+    font-size: 16px;
+    background: rgb(85, 1, 85);
+    border: solid 2px  rgb(85, 1, 85);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
