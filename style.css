@@ -29,7 +29,7 @@
     text-align: center;
 
 }
-#questions{
+#questions-pg{
     display:none;
     text-align: center;
     margin-top: 4rem;
@@ -57,13 +57,13 @@ button.highscore{
     padding-right: 1rem;
     margin-right: 10px;
 }
-#choices ul{
+#choices{
     list-style: none;
     text-align: justify;
-    padding-left: 18rem;
+    
     padding-top: 1rem;
 }
-li .choice{
+button.choice{
     margin-bottom: 8px;
     font-size: 16px;
     background: rgb(85, 1, 85);

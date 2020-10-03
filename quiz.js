@@ -1,61 +1,95 @@
 //declear variables
+var currentQuestions = 0
+
+
+
+
+
 var highscoresLinkEl =document.querySelector("#Highscores-link");
 var timerEl = document.querySelector("#timer");
 var startPageEl = document.querySelector("#start-page");
 var btnStartEl = document.querySelector("#start");
-var questionsEl = document.querySelector("#questions");
+var questionsPgEl = document.querySelector("#questions-pg");
 var questionTextEl =document.querySelector("#question-text");
 var choicesEl = document.querySelector("#choices");
 var allDoneEl = document.querySelector("#All-done");
 var highscoreEl = document.querySelector("#highscore")
+var resetBtnEl = document.querySelector("#goback");
+var clearEl = document.querySelector("#clear highscore");
+var btnChoiceEl = document.getElementsByClassName("choise");
 
-console.log(questionEl);
+
+var currentQuestions = {};
+
 //creat the rest of the questions and answers.
 
- var questionEl = [
-     {
+var questionEl = [
+    {
         asked: 'Commonly used data types DO NOT include:',
-        choices: ['strings', 'booleans', 'alerts', 'numbers'],
+        choice: ['strings', 'booleans', 'alerts', 'numbers'],
         answer: 'alerts'
+    
+    },
 
-     },
-
-     { 
+    { 
         asked:  'The condition in an if / else statement is enclosed within ____.',
-        choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
+        choice: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
         answer: 'parentheses'
     },
 
     {
         asked: 'Arrays in JavaScript can be used to store ____.',
-        choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
+        choice: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],
         answer: 'all of the above'   
     },
 
     {
         asked: 'String values must be enclosed within ____ when being assigned to variables.',
-        choices: ['commas', 'curly brackets', 'quotes', 'parentheses'],
+        choice: ['commas', 'curly brackets', 'quotes', 'parentheses'],
         answer: 'quotes'
     },
 
     {
         asked: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-        choices: ['Javascript', 'terminal / bash', 'for loops', 'console log'],
+        choice: ['Javascript', 'terminal / bash', 'for loops', 'console log'],
         answer: 'console log'
     }
 
 ];
-console.log(questionEl);
+
 //start timer, show quiz and hide start button and other texts .
- btnStartEl.addEventListener("click",()=>{
-      startPageEl.style.display = "None";
-       
- }
- );
- console.log(startPageEl);
+
+var timer = 60;
+var score= 0
+//display questions and timer
+function showQuiz(){
+    questionsPgEl.style.display = "block"; //question displayed.
+    displayQuestions();
+
+    //time
+    var timeInterval = setInterval(function(){
+        timer--;
+        
+        timerEl.textContent = "Timer" + "  "
+        + timer;
+
+        if(timer=== 0){
+            clearInterval(timeInterval);
+        }
 
 
+    }, 1000);
 
+
+}
+
+
+//loop the questions when answer is clicked.
+function displayQuestions(){
+    
+    
+    //getNewQuestions();
+}    
 
 
 //when done with the quiz hide the current page and display all done page.
@@ -63,3 +97,10 @@ console.log(questionEl);
 //show high scores.
 //if clear highscore button used then clear the scores.
 //if goback button used go backto start quize.
+
+btnStartEl.addEventListener("click",()=>{
+    startPageEl.style.display = "None";
+    showQuiz();
+
+}
+);
