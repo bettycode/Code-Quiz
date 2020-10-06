@@ -29,7 +29,7 @@
     text-align: center;
 
 }
-#questions-pg{
+#questions-pg {
     display:none;
     text-align: center;
     margin-top: 4rem;
@@ -58,16 +58,22 @@ button.highscore{
     margin-right: 10px;
 }
 #choices{
+    
     list-style: none;
     text-align: justify;
     
     padding-top: 1rem;
 }
 button.choice{
+    
+    margin-right:1rem;
     margin-bottom: 8px;
     font-size: 16px;
     background: rgb(85, 1, 85);
     border: solid 2px  rgb(85, 1, 85);
     padding-left: 1rem;
     padding-right: 1rem;
+}
+.hide{
+    display:none;
 }
