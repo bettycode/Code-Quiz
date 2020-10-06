@@ -20,14 +20,14 @@ var questionEl = [
   {
     question: "Commonly used data types DO NOT include:",
     choice: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts",
+    answers: "alerts",
   },
 
   {
     question:
       "The condition in an if / else statement is enclosed within ____.",
     choice: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses",
+    answers: "parentheses",
   },
 
   {
@@ -38,21 +38,21 @@ var questionEl = [
       "booleans",
       "all of the above",
     ],
-    answer: "all of the above",
+    answers: "all of the above",
   },
 
   {
     question:
       "String values must be enclosed within ____ when being assigned to variables.",
     choice: ["commas", "curly brackets", "quotes", "parentheses"],
-    answer: "quotes",
+    answers: "quotes",
   },
 
   {
     question:
       "A very useful tool used during development and debugging for printing content to the debugger is:",
     choice: ["Javascript", "terminal / bash", "for loops", "console log"],
-    answer: "console log",
+    answers: "console log",
   },
 ];
 //eventlistener for start button
@@ -81,20 +81,18 @@ function start() {
     }
   }, 1000);
 }
-function setNextQuestion() {
-  displayQuestions(questionEl[questionIndex]);
-  quizEnd();
-}
+//this changes the question to the next one 
+
 var questionEl, questionIndex;
 
 //display questions when button is clicked.
 function displayQuestions() {
   questionTextEl.innerText = questionEl[questionIndex].question; // this displays the question text
-  console.log(questionTextEl);
+  //console.log(questionTextEl);
 
   // this displays the choices (but they are doubble)?
   var choice = questionEl[questionIndex].choice;
-  console.log(choice);
+  //console.log(choice);
   for (var i = 0; i < choice.length; i++) {
     //choicesEl.innerHTML +="<button>" + choice[i] + "</button>";
     var choiceEl = document.createElement("button");
@@ -103,40 +101,56 @@ function displayQuestions() {
     choiceEl.setAttribute("type", "button");
     choiceEl.setAttribute("id", "choice-element");
     choicesEl.appendChild(choiceEl);
-    console.log(choice[i]);
+    //console.log(choice[i]);
 
-    choiceEl.addEventListener("click", () => {
+    choiceEl.addEventListener("click", function(event) {
+      var target = event.target;
+      console.log(target.innerText);
+      correctAnswers(target.innerText);
       questionIndex++;
-
       setNextQuestion();
+      
+      
+    
     });
   }
-    //eventlistener and conditions for answer. 
-  msgEl.addEventListener("click", (answer) => {
-    msgEl.style.display = "none";
-    correctAnswer = questionEl[questionIndex].answer;
-    var answer = this.innerText;
-    console.log(this.innerText , correctAnswer);
 
-    if (answer === correctAnswer) {
-      timer = timer + 15;
-      msgEl.style.display = "block";
-      msgEl.innerText = "Correct!";
-    } else {
-      timer = timer - 15;
-      msgEl.style.display = "block";
-      msgEl.innerText = "Wrong!";
-    }
-  });
+
+    //eventlistener and conditions for answer. 
+  
+  
 }
 
 displayQuestions();
 
+function correctAnswers(answerText){
+  var answers = questionEl[questionIndex].answers;
+  //console.log(answers);
+  console.log(answerText);
+  //console.log(this.innerText, answers);
+  if(answerText.trim() === answers.trim()){
+    document.querySelector("#result").innerText = "Correct!";
+  }else{
+    document.querySelector("#result").innerText = "Incorrect!";
+
+  }
+}
+
+function setNextQuestion() {
+  
+  while(choicesEl.firstChild){
+    choicesEl.removeChild(choicesEl.firstChild);
+  }
+  displayQuestions(questionEl[questionIndex]);
+  quizEnd();
+}
+
+
 // end quiz
 function quizEnd() {
   clearInterval(timeInterval);
-  startPageEl.style.display = "none";
-  questionsPgEl.style.display = "block";
+  //startPageEl.style.display = "block";
+  //questionsPgEl.style.display = "block";
 }
 
 console.log("=========");
