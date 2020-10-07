@@ -65,7 +65,7 @@ var score = 0;
 var timeInterval;
 
 //display questions and timer
-function start() {
+/*function start() {
   startPageEl.style.display = "none";
   questionsPgEl.style.display = "block";
 
@@ -80,13 +80,15 @@ function start() {
       quizEnd();
     }
   }, 1000);
-}
+}*/
 //this changes the question to the next one 
 
 var questionEl, questionIndex;
 
 //display questions when button is clicked.
 function displayQuestions() {
+
+
   questionTextEl.innerText = questionEl[questionIndex].question; // this displays the question text
   //console.log(questionTextEl);
 
@@ -107,8 +109,10 @@ function displayQuestions() {
       var target = event.target;
       console.log(target.innerText);
       correctAnswers(target.innerText);
+      
       questionIndex++;
       setNextQuestion();
+      //questionIndex++;
       
       
     
@@ -121,20 +125,48 @@ function displayQuestions() {
   
 }
 
+function start() {
+  startPageEl.style.display = "none";
+  questionsPgEl.style.display = "block";
+
+  //time
+  timeInterval = setInterval(function () {
+    timer--;
+
+    timerEl.textContent = "Timer" + "  " + timer;
+
+    if (timer === 0) {
+      clearInterval(timeInterval);
+      quizEnd();
+    }
+  }, 1000);
+}
+
 displayQuestions();
 
 function correctAnswers(answerText){
+  /*if(msgEl.style.display!=='none'){
+    setTimeout(function()
+    { msgEl.style.display = 'none'; },
+      1000);
+  }*/
+  
   var answers = questionEl[questionIndex].answers;
   //console.log(answers);
   console.log(answerText);
   //console.log(this.innerText, answers);
+  
   if(answerText.trim() === answers.trim()){
     document.querySelector("#result").innerText = "Correct!";
+    //questionIndex++;
   }else{
     document.querySelector("#result").innerText = "Incorrect!";
+    //questionIndex++;
 
   }
+  
 }
+
 
 function setNextQuestion() {
   
@@ -142,11 +174,11 @@ function setNextQuestion() {
     choicesEl.removeChild(choicesEl.firstChild);
   }
   displayQuestions(questionEl[questionIndex]);
-  quizEnd();
+  
 }
 
 
-// end quiz
+
 function quizEnd() {
   clearInterval(timeInterval);
   //startPageEl.style.display = "block";
