@@ -11,6 +11,7 @@ var choicesEl = document.querySelector("#choices");
 //var resetBtnEl = document.querySelector("#goback");
 //var clearEl = document.querySelector("#clear highscore");
 var msgEl = document.querySelector("#message");
+var resultEl = document.querySelector("#result");
 var questionIndex = 0;
 var choiceIndex = 0;
 
@@ -65,7 +66,7 @@ var score = 0;
 var timeInterval;
 
 //display questions and timer
-/*function start() {
+function start() {
   startPageEl.style.display = "none";
   questionsPgEl.style.display = "block";
 
@@ -80,7 +81,7 @@ var timeInterval;
       quizEnd();
     }
   }, 1000);
-}*/
+}
 //this changes the question to the next one 
 
 var questionEl, questionIndex;
@@ -109,7 +110,7 @@ function displayQuestions() {
       var target = event.target;
       console.log(target.innerText);
       correctAnswers(target.innerText);
-      
+     
       questionIndex++;
       setNextQuestion();
       //questionIndex++;
@@ -125,31 +126,11 @@ function displayQuestions() {
   
 }
 
-function start() {
-  startPageEl.style.display = "none";
-  questionsPgEl.style.display = "block";
-
-  //time
-  timeInterval = setInterval(function () {
-    timer--;
-
-    timerEl.textContent = "Timer" + "  " + timer;
-
-    if (timer === 0) {
-      clearInterval(timeInterval);
-      quizEnd();
-    }
-  }, 1000);
-}
 
 displayQuestions();
 
+
 function correctAnswers(answerText){
-  /*if(msgEl.style.display!=='none'){
-    setTimeout(function()
-    { msgEl.style.display = 'none'; },
-      1000);
-  }*/
   
   var answers = questionEl[questionIndex].answers;
   //console.log(answers);
@@ -158,14 +139,30 @@ function correctAnswers(answerText){
   
   if(answerText.trim() === answers.trim()){
     document.querySelector("#result").innerText = "Correct!";
+   
     //questionIndex++;
   }else{
     document.querySelector("#result").innerText = "Incorrect!";
     //questionIndex++;
+    
 
   }
   
+  if (resultEl.style.display !== 'none') {
+    //wait time to make sure user can see "Correct!" / "Wrong!" msg from last question
+    setTimeout(function(){ resultEl.style.display = 'none'; }, 500);
+    
+}else{
+  setTimeout(function(){ resultEl.style.display = 'block';
+  setTimeout(function(){ resultEl.style.display = 'none'; }, 500);
+
+}, 500);
 }
+  
+}
+
+
+
 
 
 function setNextQuestion() {
