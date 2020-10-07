@@ -88,7 +88,9 @@ var questionEl, questionIndex;
 
 //display questions when button is clicked.
 function displayQuestions() {
-
+  if(questionIndex === questionEl.length){
+    quizEnd()
+  }
 
   questionTextEl.innerText = questionEl[questionIndex].question; // this displays the question text
   //console.log(questionTextEl);
@@ -154,14 +156,13 @@ function correctAnswers(answerText){
     
 }else{
   setTimeout(function(){ resultEl.style.display = 'block';
-  setTimeout(function(){ resultEl.style.display = 'none'; }, 500);
+  setTimeout(function(){ resultEl.style.display = 'none'; }, 300);
 
 }, 500);
 }
   
+
 }
-
-
 
 
 
@@ -177,9 +178,11 @@ function setNextQuestion() {
 
 
 function quizEnd() {
+ 
   clearInterval(timeInterval);
-  //startPageEl.style.display = "block";
-  //questionsPgEl.style.display = "block";
+
+  questionsPgEl.style.display = 'none';
+  
 }
 
 console.log("=========");
