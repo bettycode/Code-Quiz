@@ -6,7 +6,7 @@ var btnStartEl = document.querySelector("#start");
 var questionsPgEl = document.querySelector("#questions-pg");
 var questionTextEl = document.querySelector("#question-text");
 var choicesEl = document.querySelector("#choices");
-//var allDoneEl = document.querySelector("#All-done");
+var allDoneEl = document.querySelector("#All-done");
 //var highscoreEl = document.querySelector("#highscore");
 //var resetBtnEl = document.querySelector("#goback");
 //var clearEl = document.querySelector("#clear highscore");
@@ -141,10 +141,11 @@ function correctAnswers(answerText){
   
   if(answerText.trim() === answers.trim()){
     document.querySelector("#result").innerText = "Correct!";
-   
+    
     //questionIndex++;
   }else{
     document.querySelector("#result").innerText = "Incorrect!";
+    timer -= 10;
     //questionIndex++;
     
 
@@ -161,6 +162,7 @@ function correctAnswers(answerText){
 }, 500);
 }
   
+allDone();
 
 }
 
@@ -175,6 +177,18 @@ function setNextQuestion() {
   
 }
 
+//when done with the quiz hide the current page and display all done page.
+function allDone(){
+  var doneEl = document.querySelector("#done");
+  doneEl.innerText = "All Done!";
+  var textEl = document.querySelector("#text");
+  textEl.innerText = "Your score is" + timer;
+
+
+
+
+
+}
 
 
 function quizEnd() {
@@ -182,12 +196,13 @@ function quizEnd() {
   clearInterval(timeInterval);
 
   questionsPgEl.style.display = 'none';
+  allDoneEl.style.display = "block";
   
 }
 
 console.log("=========");
 
-//when done with the quiz hide the current page and display all done page.
+
 //show final score and ask for initials and store the scores.
 //show high scores.
 //if clear highscore button used then clear the scores.
