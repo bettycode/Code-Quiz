@@ -65,7 +65,8 @@ button.highscore{
     padding-top: 1rem;
 }
 button.choice{
-    
+    display: inline-block;
+    cursor: pointer;
     margin-right:1rem;
     margin-bottom: 8px;
     font-size: 16px;
@@ -82,6 +83,25 @@ display: none;
 }
 #donebtn{
     margin-top: 1.5rem;
+    font-size: 16px;
+    background: rgb(85, 1, 85);
+    border: solid 2px  rgb(85, 1, 85);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+li{
+    padding: 5px;
+    list-style:none;
+}
+
+#goback{
+    font-size: 16px;
+    background: rgb(85, 1, 85);
+    border: solid 2px  rgb(85, 1, 85);
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#clear-highscore{
     font-size: 16px;
     background: rgb(85, 1, 85);
     border: solid 2px  rgb(85, 1, 85);

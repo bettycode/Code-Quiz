@@ -7,9 +7,9 @@ var questionsPgEl = document.querySelector("#questions-pg");
 var questionTextEl = document.querySelector("#question-text");
 var choicesEl = document.querySelector("#choices");
 var allDoneEl = document.querySelector("#All-done");
-//var highscoreEl = document.querySelector("#highscore");
-//var resetBtnEl = document.querySelector("#goback");
-//var clearEl = document.querySelector("#clear highscore");
+var highscoreEl = document.querySelector("#highscore");
+var goBackBtnEl = document.querySelector("#goback");
+var clearEl = document.querySelector("#clear-highscore");
 var msgEl = document.querySelector("#message");
 var resultEl = document.querySelector("#result");
 var questionIndex = 0;
@@ -100,12 +100,14 @@ function displayQuestions() {
   //console.log(choice);
   for (var i = 0; i < choice.length; i++) {
     //choicesEl.innerHTML +="<button>" + choice[i] + "</button>";
+    var liEl = document.createElement("li");
     var choiceEl = document.createElement("button");
     choiceEl.textContent = choice[i];
     choiceEl.setAttribute("class", "btn btn-primary btn-sm  choice");
     choiceEl.setAttribute("type", "button");
     choiceEl.setAttribute("id", "choice-element");
-    choicesEl.appendChild(choiceEl);
+    choicesEl.appendChild(liEl);
+    liEl.appendChild(choiceEl);
     //console.log(choice[i]);
 
     choiceEl.addEventListener("click", function(event) {
@@ -184,11 +186,42 @@ function allDone(){
   var textEl = document.querySelector("#text");
   textEl.innerText = "Your score is" + timer;
 
-
-
-
+//add event listener
+var donebtnEl = document.querySelector("#donebtn");
+var doneInputEl =document.querySelector(".done-Input")
+donebtnEl.addEventListener("click",()=>{
+   initials = doneInputEl.value;
+//console.log(doneInputEl.value);
+   var userEl = {
+     initials:initials, score: timer
+   };
+//console.log(initials);
+    var currentList = [];
+    if (localStorage.getItem("box")!== null){
+      currentList = JSON.parse(localStorage.getItem("box"));
+      
+    }
+    currentList.push(userEl);
+    localStorage.setItem("box",JSON.stringify(currentList));
+    highscore();
+});
 
 }
+
+function highscore(){
+  allDoneEl.style.display = "none";
+  highscoreEl.style.display = "block";
+  
+  var scorelistEl = document.querySelector("#score-list");
+  scorelistEl.innerHTML= "High Score";
+
+  var currentList = [];
+  if (localStorage.getItem("box") !== null) {
+    currentList = JSON.parse(localStorage.getItem("box"));
+}
+
+}       
+  
 
 
 function quizEnd() {
