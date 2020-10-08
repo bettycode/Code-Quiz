@@ -70,6 +70,8 @@ highscoresLinkEl.addEventListener("click",()=>{
 });
 clearEl.addEventListener("click",()=>{
   window.localStorage.clear();
+  
+  highscore();
 });
 
 //start timer, show quiz and hide start button and other texts .
@@ -148,6 +150,17 @@ function displayQuestions() {
 displayQuestions();
 
 
+
+function setNextQuestion() {
+  
+  while(choicesEl.firstChild){
+    choicesEl.removeChild(choicesEl.firstChild);
+  }
+  displayQuestions(questionEl[questionIndex]);
+  
+}
+
+
 function correctAnswers(answerText){
   
   var answers = questionEl[questionIndex].answers;
@@ -184,17 +197,18 @@ allDone();
 
 
 
-function setNextQuestion() {
+/*function setNextQuestion() {
   
   while(choicesEl.firstChild){
     choicesEl.removeChild(choicesEl.firstChild);
   }
   displayQuestions(questionEl[questionIndex]);
   
-}
+}*/
 
 //when done with the quiz hide the current page and display all done page.
 function allDone(){
+  
   var doneEl = document.querySelector("#done");
   doneEl.innerText = "All Done!";
   var textEl = document.querySelector("#text");
@@ -203,9 +217,9 @@ function allDone(){
 //add event listener
 var donebtnEl = document.querySelector("#donebtn");
 var doneInputEl =document.querySelector(".done-Input");
-donebtnEl.addEventListener("click",()=>{
-  //event.preventDefault();
-  initial = doneInputEl.value;
+donebtnEl.addEventListener("click",(e)=>{
+  e.stopImmediatePropagation();
+ initial = doneInputEl.value;
   var curUser = {
       initial:initial, score: timer
   };
@@ -216,6 +230,9 @@ donebtnEl.addEventListener("click",()=>{
   curList.push(curUser);       
   localStorage.setItem("bx",JSON.stringify(curList));
   
+
+  //var doneInputEl = JSON.parse(localStorage.getItem(doneInputEl))|| [];
+  //console.log(doneInputEl);
     
     highscore();
 });
@@ -239,6 +256,7 @@ function highscore(){
         var one = curList[i];
         var str = one.initial + ": " + one.score ;
         var newLine = document.createElement('ol');
+        
         newLine.textContent = str;
         highscoreEl.appendChild(newLine);
     }
