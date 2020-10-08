@@ -77,6 +77,11 @@ button.choice{
 }
 #result{
     display:block;
+    font-size: 20px;
+    font-weight: 500;
+     font-style: italic;
+      border-top: 2px solid rgba(128, 128, 128, 0.315);
+      margin-top: 1rem;
 }
 .All-done{
 display: none;
@@ -95,6 +100,7 @@ li{
 }
 
 #goback{
+    margin-top: 1rem;
     font-size: 16px;
     background: rgb(85, 1, 85);
     border: solid 2px  rgb(85, 1, 85);
@@ -102,9 +108,11 @@ li{
     padding-right: 1rem;
 }
 #clear-highscore{
+    margin-top: 1rem;
     font-size: 16px;
     background: rgb(85, 1, 85);
     border: solid 2px  rgb(85, 1, 85);
     padding-left: 1rem;
     padding-right: 1rem;
 }
+

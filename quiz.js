@@ -1,5 +1,5 @@
 //declear variables
-//var highscoresLinkEl = document.querySelector("#Highscores-link");
+var highscoresLinkEl = document.querySelector("#Highscores-link");
 var timerEl = document.querySelector("#timer");
 var startPageEl = document.querySelector("#start-page");
 var btnStartEl = document.querySelector("#start");
@@ -56,8 +56,21 @@ var questionEl = [
     answers: "console log",
   },
 ];
-//eventlistener for start button
+//eventlistener for buttons
 btnStartEl.addEventListener("click", start);
+goBackBtnEl.addEventListener("click",()=>{
+  startPageEl.style.display = "block";
+  highscoreEl.style.display = "none";
+  window.location.reload(true);
+});
+highscoresLinkEl.addEventListener("click",()=>{
+  startPageEl.style.display = "none";
+  highscoreEl.style.display = "block";
+  clearInterval(timeInterval);
+});
+clearEl.addEventListener("click",()=>{
+  window.localStorage.clear();
+});
 
 //start timer, show quiz and hide start button and other texts .
 // variables for timer.
@@ -69,6 +82,7 @@ var timeInterval;
 function start() {
   startPageEl.style.display = "none";
   questionsPgEl.style.display = "block";
+ 
 
   //time
   timeInterval = setInterval(function () {
@@ -188,21 +202,21 @@ function allDone(){
 
 //add event listener
 var donebtnEl = document.querySelector("#donebtn");
-var doneInputEl =document.querySelector(".done-Input")
+var doneInputEl =document.querySelector(".done-Input");
 donebtnEl.addEventListener("click",()=>{
-   initials = doneInputEl.value;
-//console.log(doneInputEl.value);
-   var userEl = {
-     initials:initials, score: timer
-   };
-//console.log(initials);
-    var currentList = [];
-    if (localStorage.getItem("box")!== null){
-      currentList = JSON.parse(localStorage.getItem("box"));
-      
-    }
-    currentList.push(userEl);
-    localStorage.setItem("box",JSON.stringify(currentList));
+  //event.preventDefault();
+  initial = doneInputEl.value;
+  var curUser = {
+      initial:initial, score: timer
+  };
+  var curList = [];
+  if (localStorage.getItem("bx") !== null) {
+      curList = JSON.parse(localStorage.getItem("bx"));
+  }
+  curList.push(curUser);       
+  localStorage.setItem("bx",JSON.stringify(curList));
+  
+    
     highscore();
 });
 
@@ -214,19 +228,32 @@ function highscore(){
   
   var scorelistEl = document.querySelector("#score-list");
   scorelistEl.innerHTML= "High Score";
+  
 
-  var currentList = [];
-  if (localStorage.getItem("box") !== null) {
-    currentList = JSON.parse(localStorage.getItem("box"));
-}
+  
+  var curList = [];
+        if (localStorage.getItem("bx") !== null) {
+            curList = JSON.parse(localStorage.getItem("bx"));
+        }
+    for (var i = 0; i < curList.length; i++) {
+        var one = curList[i];
+        var str = one.initial + ": " + one.score ;
+        var newLine = document.createElement('ol');
+        newLine.textContent = str;
+        highscoreEl.appendChild(newLine);
+    }
 
-}       
+} 
+
+
+     
   
 
 
 function quizEnd() {
  
   clearInterval(timeInterval);
+ 
 
   questionsPgEl.style.display = 'none';
   allDoneEl.style.display = "block";
