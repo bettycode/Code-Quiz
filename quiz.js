@@ -70,7 +70,7 @@ highscoresLinkEl.addEventListener("click",()=>{
 });
 clearEl.addEventListener("click",()=>{
   window.localStorage.clear();
-  
+  highscoreEl.lastChild.remove();
   highscore();
 });
 
