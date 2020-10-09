@@ -46,6 +46,13 @@
     text-align: center;
     margin-top: 4rem;
 }
+#highscore p{
+    display: block;
+    font-size: 20;
+    margin: 1rem;
+    background: whitesmoke;
+    padding: 1rem;
+}
 #highscore h2{
     padding-bottom: 1rem;
 }
@@ -80,7 +87,7 @@ button.choice{
     font-size: 20px;
     font-weight: 500;
      font-style: italic;
-      border-top: 2px solid rgba(128, 128, 128, 0.315);
+      border-top: 2px solid rgba(218, 208, 208, 0.157);
       margin-top: 1rem;
 }
 .All-done{

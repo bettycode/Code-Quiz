@@ -58,14 +58,16 @@ var questionEl = [
 ];
 //eventlistener for buttons
 btnStartEl.addEventListener("click", start);
+
 goBackBtnEl.addEventListener("click",()=>{
   startPageEl.style.display = "block";
-  highscoreEl.style.display = "none";
+  //highscoreEl.style.display = "none";
   window.location.reload(true);
 });
 highscoresLinkEl.addEventListener("click",()=>{
   startPageEl.style.display = "none";
   highscoreEl.style.display = "block";
+  highscore();
   clearInterval(timeInterval);
 });
 clearEl.addEventListener("click",()=>{
@@ -188,7 +190,7 @@ function correctAnswers(answerText){
   setTimeout(function(){ resultEl.style.display = 'block';
   setTimeout(function(){ resultEl.style.display = 'none'; }, 300);
 
-}, 500);
+}, 300);
 }
   
 allDone();
@@ -209,10 +211,11 @@ allDone();
 //when done with the quiz hide the current page and display all done page.
 function allDone(){
   
+  
   var doneEl = document.querySelector("#done");
   doneEl.innerText = "All Done!";
   var textEl = document.querySelector("#text");
-  textEl.innerText = "Your score is" + timer;
+  textEl.innerText = "Your score is  " + timer;
 
 //add event listener
 var donebtnEl = document.querySelector("#donebtn");
@@ -255,7 +258,7 @@ function highscore(){
     for (var i = 0; i < curList.length; i++) {
         var one = curList[i];
         var str = one.initial + ": " + one.score ;
-        var newLine = document.createElement('ol');
+        var newLine = document.createElement('p');
         
         newLine.textContent = str;
         highscoreEl.appendChild(newLine);
