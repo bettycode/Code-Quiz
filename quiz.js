@@ -267,9 +267,6 @@ function highscore(){
 } 
 
 
-     
-  
-
 
 function quizEnd() {
  
