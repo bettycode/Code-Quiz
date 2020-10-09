@@ -1,4 +1,4 @@
-## Code-Quiz
+### Code-Quiz
 
 ```
 In this project, the client wanted to take a timed quiz on JavaScript fundamentals that stores high scores.
@@ -6,7 +6,7 @@ so that they can gauge their progress compared to their peers.
 ```
 
 
-# What to expect :-
+### What to expect :-
 
 ```
 - when you click the start button, then you will be presented with a question.
@@ -20,7 +20,7 @@ so that they can gauge their progress compared to their peers.
 - Now you can save your initials and scores.
 
 
-![Code Quiz](https://drive.google.com/file/d/1GqOcYsvzzyEMrD221GY_iG2Q7fvZHRBj/view)
+![Code Quiz](Asset/Code%20Quiz.gif/)
 
 
 
