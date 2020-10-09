@@ -1,4 +1,4 @@
-//declear variables
+//variables
 var highscoresLinkEl = document.querySelector("#Highscores-link");
 var timerEl = document.querySelector("#timer");
 var startPageEl = document.querySelector("#start-page");
@@ -61,12 +61,14 @@ btnStartEl.addEventListener("click", start);
 
 goBackBtnEl.addEventListener("click",()=>{
   startPageEl.style.display = "block";
-  //highscoreEl.style.display = "none";
+  highscoreEl.style.display = "none";
   window.location.reload(true);
 });
-highscoresLinkEl.addEventListener("click",()=>{
+
+highscoresLinkEl.addEventListener("click",(e)=>{
+  e.preventDefault();
   startPageEl.style.display = "none";
-  highscoreEl.style.display = "block";
+  //highscoreEl.style.display = "block";
   highscore();
   clearInterval(timeInterval);
 });
@@ -152,7 +154,7 @@ function displayQuestions() {
 displayQuestions();
 
 
-
+//go to the next question
 function setNextQuestion() {
   
   while(choicesEl.firstChild){
@@ -162,7 +164,7 @@ function setNextQuestion() {
   
 }
 
-
+//display correct||Wrong when choice is selected.
 function correctAnswers(answerText){
   
   var answers = questionEl[questionIndex].answers;
@@ -183,7 +185,7 @@ function correctAnswers(answerText){
   }
   
   if (resultEl.style.display !== 'none') {
-    //wait time to make sure user can see "Correct!" / "Wrong!" msg from last question
+    //wait time to make sure user can see "Correct!" / "Wrong!" text from last question
     setTimeout(function(){ resultEl.style.display = 'none'; }, 500);
     
 }else{
@@ -209,15 +211,16 @@ allDone();
 }*/
 
 //when done with the quiz hide the current page and display all done page.
+//show final score and ask for initials and store the scores.
 function allDone(){
   
   
   var doneEl = document.querySelector("#done");
   doneEl.innerText = "All Done!";
   var textEl = document.querySelector("#text");
-  textEl.innerText = "Your score is  " + timer;
+  textEl.innerText = "Your score is  " + timer;//show score
 
-//add event listener
+//add event listener and pushing current list to local storage.
 var donebtnEl = document.querySelector("#donebtn");
 var doneInputEl =document.querySelector(".done-Input");
 donebtnEl.addEventListener("click",(e)=>{
@@ -234,6 +237,7 @@ donebtnEl.addEventListener("click",(e)=>{
   localStorage.setItem("bx",JSON.stringify(curList));
   
 
+
   //var doneInputEl = JSON.parse(localStorage.getItem(doneInputEl))|| [];
   //console.log(doneInputEl);
     
@@ -241,8 +245,9 @@ donebtnEl.addEventListener("click",(e)=>{
 });
 
 }
-
+// high score page.
 function highscore(){
+  
   allDoneEl.style.display = "none";
   highscoreEl.style.display = "block";
   
@@ -250,23 +255,30 @@ function highscore(){
   scorelistEl.innerHTML= "High Score";
   
 
-  
+  //getting item from local storage 
   var curList = [];
         if (localStorage.getItem("bx") !== null) {
             curList = JSON.parse(localStorage.getItem("bx"));
         }
+// sort highscore
+        curList.sort(function(a,b){
+          return b.score - a.score;
+        
+        })
+
     for (var i = 0; i < curList.length; i++) {
         var one = curList[i];
-        var str = one.initial + ": " + one.score ;
+        var two = one.initial + ": " + one.score ;
+
         var newLine = document.createElement('p');
         
-        newLine.textContent = str;
+        newLine.textContent = two;
         highscoreEl.appendChild(newLine);
     }
 
 } 
 
-
+//End quiz
 
 function quizEnd() {
  
@@ -281,7 +293,4 @@ function quizEnd() {
 console.log("=========");
 
 
-//show final score and ask for initials and store the scores.
-//show high scores.
-//if clear highscore button used then clear the scores.
-//if goback button used go backto start quize.
+

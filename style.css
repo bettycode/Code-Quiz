@@ -1,4 +1,4 @@
-
+/*--start page--*/
 #start-page{
     display:inline-block;
     text-align: center;
@@ -29,17 +29,25 @@
     text-align: center;
 
 }
+/*--question page--*/
+
 #questions-pg {
     display:none;
     text-align: center;
     margin-top: 4rem;
 }
+/*--all done page--*/
 
 #All-done{
     display: none;
     text-align: center;
     padding-top: 4rem;
 }
+.All-done{
+    display: none;
+    }
+
+/*--high score page--*/
 
 #highscore{
     display: none;
@@ -64,6 +72,8 @@ button.highscore{
     padding-right: 1rem;
     margin-right: 10px;
 }
+/*--choices buttons--*/
+
 #choices{
     
     list-style: none;
@@ -82,6 +92,7 @@ button.choice{
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
 #result{
     display:block;
     font-size: 20px;
@@ -90,9 +101,7 @@ button.choice{
       border-top: 2px solid rgba(218, 208, 208, 0.157);
       margin-top: 1rem;
 }
-.All-done{
-display: none;
-}
+/*--button--*/
 #donebtn{
     margin-top: 1.5rem;
     font-size: 16px;
