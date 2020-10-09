@@ -1,4 +1,4 @@
-# Code-Quiz
+## Code-Quiz
 
 ```
 In this project, the client wanted to take a timed quiz on JavaScript fundamentals that stores high scores.
