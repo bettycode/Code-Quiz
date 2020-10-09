@@ -20,7 +20,7 @@ so that they can gauge their progress compared to their peers.
 - Now you can save your initials and scores.
 
 
-![](/Asset/Code%20Quiz.gif)
+![Code Quiz](https://drive.google.com/file/d/1GqOcYsvzzyEMrD221GY_iG2Q7fvZHRBj/view)
 
 
 
