@@ -21,7 +21,7 @@ so that they can gauge their progress compared to their peers.
 
 
 
-![Code Quiz](Asset/CodeQuiz.gif)
+![Code Quiz](Asset/Code%20Quiz.gif)
 
 
 
