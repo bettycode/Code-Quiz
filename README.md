@@ -1,9 +1,9 @@
 ### Code-Quiz
 
-```
+
 In this project, the client wanted to take a timed quiz on JavaScript fundamentals that stores high scores.
 so that they can gauge their progress compared to their peers.
-```
+
 
 
 ### What to expect :-
