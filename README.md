@@ -8,7 +8,7 @@ so that they can gauge their progress compared to their peers.
 
 ### What to expect :-
 
-```
+
 - when you click the start button, then you will be presented with a question.
 
 - when you answer the question, then you are presented with another question.
