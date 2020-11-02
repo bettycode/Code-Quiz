@@ -26,3 +26,10 @@ so that they can gauge their progress compared to their peers.
 
 ### Live link to deployed app
 (https://bettycode.github.io/Code-Quiz/)
+
+### List of technologies used:-
+
+* HTML
+* CSS 
+* Javascript
+* Bootstrap
