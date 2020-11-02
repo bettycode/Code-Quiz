@@ -24,4 +24,5 @@ so that they can gauge their progress compared to their peers.
 ![Code Quiz](Asset/Code%20Quiz.gif)
 
 
-
+### Live link to deployed app
+(https://bettycode.github.io/Code-Quiz/)
